@@ -7,8 +7,8 @@ import scipy.stats as sp
 con = pymysql.connect(host='localhost', user='s2160628', passwd='123456', db='s2160628')
 cur = con.cursor()
 if(len(sys.argv) != 4) :
-  print ("Usage: correlate.py col1 col2 (selection); Nparams = ",sys.argv)
-  sys.exit(-1)
+    print ("Usage: correlate.py col1 col2 (selection); Nparams = ",sys.argv)
+    sys.exit(-1)
 
 col1 = sys.argv[1]
 col2 = sys.argv[2]

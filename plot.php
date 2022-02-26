@@ -48,9 +48,9 @@ if(isset($_POST['tgval']))                      #Check if form is filled in
     $mansel = $mansel.")";
     $comtodo = "./histog.py ".$dbfs[$chosen]." \"".$nms[$chosen]."\" \"".$mansel."\"";         #Prepare command to run external program
     $output = base64_encode(shell_exec($comtodo));                                             #Run command and capture output converting to base64 
-    echo <<<_imgput                                                                            # endoding
+    echo <<<_imgput
     <pre>
-    <img  src="data:image/png;base64,$output" />                                               #inline the image
+    <img  src="data:/png;base64,$output" />
     </pre>
 _imgput;
     }
@@ -69,5 +69,3 @@ echo <<<_TAIL1
 </body>
 </html>
 _TAIL1;
-
-?>
