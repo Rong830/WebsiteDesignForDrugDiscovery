@@ -17,7 +17,7 @@ echo <<<_HEAD1
 	background-color: #fff;
 	border-radius: 20px;
 	width: 300px;
-	height: 350px;
+	height: 200px;
 	margin: auto;
 	position: absolute;
 	top: 0;
@@ -52,26 +52,20 @@ for ($j = 0; $j < $rows; ++$j) {
 $_SESSION['supmask'] = $mask;
 echo <<<_EOP
 
+<p id="image_logo"><img src="http://mscidwd.bch.ed.ac.uk/s2160628/images/background.png" style="width:100%;"></p>
 
-<div class="w3-container w3-padding-64 w3-theme-l5" id="contact">
-<div class="w3-row">
-<div class="w3-col m5">
-<div class="w3-col m7">
-   
-   <img src="/localdisk/www/html/s2160628/image/background.png">
+<script>
+function validate(form) {
+fail = ""
+if(form.fn.value =="") fail = "Must Give Forname "
+if(form.sn.value == "") fail += "Must Give Surname"
+if(fail =="") return true
+   else {alert(fail); return false}
+}
+</script>
 
-   <script>
-   function validate(form) {
-   fail = ""
-   if(form.fn.value =="") fail = "Must Give Forname "
-   if(form.sn.value == "") fail += "Must Give Surname"
-   if(fail =="") return true
-      else {alert(fail); return false}
-   }
-   </script>
-
-   <div class="main">
-   <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="indexp.php" target="_blank" method="post" onSubmit="return validate(this)">
+<div class="main">
+   <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="indexp.php" method="post" onSubmit="return validate(this)">
 
       <div class="w3-section">
          <label> First Name </label>
@@ -83,19 +77,13 @@ echo <<<_EOP
          <input class="w3-input" type="text" name="sn" />
       </div>
 
-      <input type="submit" class="w3-button w3-right w3-theme" value="Log In" />
+      <input type="submit" class="w3-button w3-right w3-theme" value="Log in" />
 
    </form>
-   </div> 
-
-</div>
-</div>
-</div>
 </div>  
 _EOP;
 
 echo <<<_TAIL1
-</pre>
 </body>
 </html>
 _TAIL1;

@@ -4,9 +4,18 @@ require_once 'login.php';
 include 'redir.php';
 echo <<<_HEAD1
 <html>
+<link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/check_box.css">
+<link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/table.css">
+
+<head>
+  <title> Suppliers Information </title>
+</head>
+
 <body>
 _HEAD1;
+
 include 'menuf.php';
+
 $db_server = mysql_connect($db_hostname, $db_username, $db_password);
 if (!$db_server) die("Unable to connect to database: " . mysql_error());
 mysql_select_db($db_database, $db_server) or die("Unable to select database: " . mysql_error());
@@ -42,24 +51,40 @@ if (isset($_POST['supplier'])) {
   }
   $_SESSION['supmask'] = $smask;
 }
-echo 'Currently selected Suppliers: ';
+
+echo '<div class="container"> <form action="p1.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">';
+echo '<h2> Select the manufactures that you are interseted in. </h2>';
+for($j = 0 ; $j < $rows ; ++$j)
+{
+  echo '<label> <input type="checkbox" name="supplier[]" value="';
+  echo $snm[$j];
+  echo'"/> <span>';
+  echo $snm[$j];
+  echo'</span> </label>';
+}
+
+echo <<<_BODY1
+<p>
+  <button type="reset" class="w3-button w3-center"> Reset </button>
+  <input type="submit" class="w3-button w3-center w3-theme" value="Done" />
+</p>
+
+
+_BODY1;
+
+echo '<div style="position: abusolute; top=20px;"> Currently selected Suppliers: ';
 for ($j = 0; $j < $rows; ++$j) {
   if ($sact[$j] == 1) {
     echo $snm[$j];
     echo " ";
   }
 }
-echo  '<br><pre> <form action="p1.php" method="post">';
-for ($j = 0; $j < $rows; ++$j) {
-  echo $snm[$j];
-  echo ' <input type="checkbox" name="supplier[]" value="';
-  echo $snm[$j];
-  echo '"/>';
-  echo "\n";
-}
+
 echo <<<_TAIL1
-  <input type="submit" value="OK" />
-</pre></form>
+</form> 
+</div>
+</div>
 </body>
 </html>
 _TAIL1;
+?>
