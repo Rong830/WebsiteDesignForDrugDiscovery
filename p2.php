@@ -46,7 +46,7 @@ echo<<<_HEAD1
     height: 200px;
     margin: auto;
     position: absolute;
-    top: -200;
+    top: 0;
     left: 0;
     right: 0;
     bottom: 300;
@@ -130,13 +130,15 @@ if($setpar) {
   }
   echo "</pre>";
 } 
+
+
 echo <<<_TAIL1
 <div class="main"><div class="container"><form action="p2.php" method="post" class="w3-container w3-card-4 w3-padding-16 w3-white"><pre>
-<div class="custom-input" align="center">  <label for="natmax" >Max Atoms</label><input type="text" name="natmax" id="natmax"/>        <label for="natmin">Min Atoms</label><input type="text" name="natmin" id="natmin"/></div>
-  <div class="custom-input" align="center">  <label for="ncrmax" >Max Carbons</label><input type="text" name="ncrmax" id="ncrmax"/>      <label for="ncrmin">Min Carbons</label><input type="text" name="ncrmin" id="ncrmin"/></div>
-  <div class="custom-input" align="center">  <label for="nntmax" >Max Nitrogens</label><input type="text" name="nntmax" id="nntmax"/>    <label for="nntmin">Min Nitrogens</label><input type="text" name="nntmin" id="nntmin"/></div>
-  <div class="custom-input" align="center">  <label for="noxmax" >Max Oxygens</label><input type="text" name="noxmax" id="noxmax"/>      <label for="noxmin">Min Oxygens</label><input type="text" name="noxmin" id="noxmin"/></div>
-  <div align="center">  <input type="submit" value="list" class="w3-button w3-center w3-theme" /></div>
+  <div class="w3-row-padding"><div class="custom-input w3-half">  <label for="natmax" >Max Atoms</label><input type="text" class="w3-input w3-border" name="natmax" id="natmax"/></div><div class="custom-input w3-half">  <label for="natmin">Min Atoms</label><input type="text" class="w3-input w3-border" name="natmin" id="natmin"/></div></div>
+  <div class="w3-row-padding"><div class="custom-input w3-half">  <label for="ncrmax" >Max Carbons</label><input type="text" class="w3-input w3-border" name="ncrmax" id="ncrmax"/></div><div class="custom-input w3-half">  <label for="ncrmin">Min Carbons</label><input type="text" class="w3-input w3-border" name="ncrmin" id="ncrmin"/></div></div>
+  <div class="w3-row-padding"><div class="custom-input w3-half">  <label for="nntmax" >Max Nitrogens</label><input type="text" class="w3-input w3-border" name="nntmax" id="nntmax"/></div><div class="custom-input w3-half">  <label for="nntmin">Min Nitrogens</label><input type="text" class="w3-input w3-border" name="nntmin" id="nntmin"/></div></div>
+  <div class="w3-row-padding"><div class="custom-input w3-half">  <label for="noxmax" >Max Oxygens</label><input type="text" class="w3-input w3-border" name="noxmax" id="noxmax"/></div><div class="custom-input w3-half">  <label for="noxmin">Min Oxygens</label><input type="text" class="w3-input w3-border" name="noxmin" id="noxmin"/></div></div>
+  <div class="w3-row-padding"><div align="center">  <input type="submit" value="list" class="w3-button w3-center w3-theme" /></div>
 </pre></div></form></div>
 </div>
 
@@ -148,13 +150,11 @@ echo <<<_TAIL1
 	}
 </script>
 
-
-
-
-
 </body>
 </html>
 _TAIL1;
+
+
 function get_post($var)
 {
   return mysql_real_escape_string($_POST[$var]);
