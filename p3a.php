@@ -44,7 +44,7 @@ if (isset($_POST['tgval'])) {
         }
     }
     $mansel = $mansel . ")";
-    $comtodo = "./histog.py " . $dbfs[$chosen] . " \"" . $nms[$chosen] . "\" \"" . $mansel . "\"";
+    $comtodo = "./plot.py " . $dbfs[$chosen] . " \"" . $nms[$chosen] . "\" \"" . $mansel . "\"";
     $output = base64_encode(shell_exec($comtodo));
     echo <<<_imgput
     <pre>

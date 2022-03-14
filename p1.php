@@ -52,6 +52,10 @@ if (isset($_POST['supplier'])) {
   $_SESSION['supmask'] = $smask;
 }
 
+/**
+ * Make a container for user to choose from different manufactures.
+ * @param str $snm the manufactures form the SQL database.
+ */
 echo '<div class="container"> <form action="p1.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">';
 echo '<h2> Select the manufactures that you are interseted in. </h2>';
 for($j = 0 ; $j < $rows ; ++$j)
@@ -63,6 +67,9 @@ for($j = 0 ; $j < $rows ; ++$j)
   echo'</span> </label>';
 }
 
+/**
+ * Make two button for user to reset the choices or submit the chossen manufactures.
+ */
 echo <<<_BODY1
 <p>
   <button type="reset" class="w3-button w3-center"> Reset </button>
@@ -72,6 +79,10 @@ echo <<<_BODY1
 
 _BODY1;
 
+/**
+ * Show the cuttent manufactures.
+ * @param int $sact Whether the user have choosed this manufacture.
+ */
 echo '<div style="position: abusolute; top=20px;"> Currently selected Suppliers: ';
 for ($j = 0; $j < $rows; ++$j) {
   if ($sact[$j] == 1) {
