@@ -7,6 +7,16 @@ echo <<<_HEAD1
 <link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/check_box.css">
 <link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/table.css">
 
+<style>
+.main{
+  position: relative;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+</style>
+
 <head>
   <title> Suppliers Information </title>
 </head>
@@ -60,7 +70,7 @@ if (isset($_POST['supplier'])) {
  * Make a container for user to choose from different manufactures.
  * @param str $snm the manufactures form the SQL database.
  */
-echo '<div class="container"> <form action="p1.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">';
+echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:300px;"> <form action="p1.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">';
 echo '<h2> Select the manufactures that you are interseted in. </h2>';
 for($j = 0 ; $j < $rows ; ++$j)
 {
@@ -72,7 +82,7 @@ for($j = 0 ; $j < $rows ; ++$j)
 }
 
 /**
- * Make two button for user to reset the choices or submit the chossen manufactures.
+ * Make two button for user to reset the choices or submit the chossen manufactures (using the provided templete from w3 school).
  */
 echo <<<_BODY1
 <p>
@@ -87,7 +97,7 @@ _BODY1;
  * Show the cuttent manufactures.
  * @param int $sact Whether the user have choosed this manufacture.
  */
-echo '<div style="position: abusolute; top=20px;"> Currently selected Suppliers: ';
+echo '<div style="position: relative; top=20px;"> Currently selected Suppliers: ';
 for ($j = 0; $j < $rows; ++$j) {
   if ($sact[$j] == 1) {
     echo $snm[$j];
@@ -100,8 +110,8 @@ for ($j = 0; $j < $rows; ++$j) {
     echo " ";
   }
 }
-echo "<br>Below is the top 3 samples for each Supplier";
-echo "</form></div>";
+echo "";
+echo "</form></div></div>";
 
 /**
  * Log in to the MySQL database.
@@ -113,31 +123,34 @@ mysql_select_db( $db_database, $db_server )or die( "Unable to select database: "
 
 /**
  * Add the title for the table.
+ * Warped the table under a <div> label with relative position.
  */
 echo <<<_TABLE1
-<div class="table-wrapper" align="bottom" style="position:absolute;top:700px;">
-    <table class="fl-table">
-        <thead>
-        <tr>
-            <th> Suppliers </th>
-            <th> id </th>
-            <th>natm</th>
-            <th>ncar</th>
-            <th>nnit</th>
-            <th>noxy</th>
-            <th>nsul</th>
-            <th>ncycl</th>
-            <th>nhdon </th>
-            <th>nhacc</th>
-            <th>nrotb</th>
-            <th>ManuID</th>
-            <th>catn</th>
-            <th>mw</th>
-            <th>TPSA</th>
-            <th>XLogP</th>
-        </tr>
-        </thead>
-        <tbody>
+
+  <div class="table-wrapper" align="center" style="position:relative;top:300px;">
+  <p> Below is the top 3 samples for each Supplier </p>
+  <table class="fl-table">
+    <thead>
+    <tr>
+      <th> Suppliers </th>
+      <th> id </th>
+      <th> natm </th>
+      <th> ncar </th>
+      <th> nnit </th>
+      <th> noxy </th>
+      <th> nsul </th>
+      <th> ncycl </th>
+      <th> nhdon </th>
+      <th> nhacc </th>
+      <th> nrotb </th>
+      <th> ManuID </th>
+      <th> catn </th>
+      <th> mw </th>
+      <th> TPSA </th>
+      <th> XLogP </th>
+    </tr>
+    </thead>
+    <tbody>
 _TABLE1;
 
 for($j = 0 ; $j < sizeof($sup) ; ++$j)
@@ -145,51 +158,54 @@ for($j = 0 ; $j < sizeof($sup) ; ++$j)
   // echo $sup[$j];
   // echo $sup_name[$j];
     // if ($sup[$j]) {
-        $query = "SELECT * FROM Compounds WHERE ManuID=$sup[$j] limit 3";
-        $result = mysql_query($query);
-        if(!$result) die("unable to process query: " . mysql_error());
-        // $rows = mysql_fetch_row($result);
-        // echo $sup[$j];
-        // echo $query;
-        // echo $result;
-        // echo $row[1];
-        while($row = mysql_fetch_row($result)) {
-          // echo "编号：".$row[0]."，用户名: " . $row[1]. "<br>";
-        
-        // echo $row[1];
-        // print_r($rows);
-        // print_r($rows);
-        echo "<tr>";
-        echo "<td>";
-        echo $sup_name[$j];
-        echo "</td>";
-        echo '<td>' . $row[0] . '</td>';
-        echo '<td>' . $row[1] . '</td>';
-        echo '<td>' . $row[2] . '</td>';
-        echo '<td>' . $row[3] . '</td>';
-        echo '<td>' . $row[4] . '</td>';
-        echo '<td>' . $row[5] . '</td>';
-        echo '<td>' . $row[6] . '</td>';
-        echo '<td>' . $row[7] . '</td>';
-        echo '<td>' . $row[8] . '</td>';
-        echo '<td>' . $row[9] . '</td>';
-        echo '<td>' . $row[10] . '</td>';
-        echo '<td>' . $row[11] . '</td>';
-        echo '<td>' . $row[12] . '</td>';
-        echo '<td>' . $row[13] . '</td>';
-        echo '<td>' . $row[14] . '</td>';
-        echo "</tr>"; 
-        // }
-    }
+  $query = "SELECT * FROM Compounds WHERE ManuID=$sup[$j] limit 3";
+  $result = mysql_query($query);
+  if(!$result) die("unable to process query: " . mysql_error());
+  // $rows = mysql_fetch_row($result);
+  // echo $sup[$j];
+  // echo $query;
+  // echo $result;
+  // echo $row[1];
+  while($row = mysql_fetch_row($result)) {        
+    // echo $row[1];
+    // print_r($rows);
+    // print_r($rows);
+    echo "<tr>";
+    echo "<td>";
+    echo $sup_name[$j];
+    echo "</td>";
+    echo '<td>' . $row[0] . '</td>';
+    echo '<td>' . $row[1] . '</td>';
+    echo '<td>' . $row[2] . '</td>';
+    echo '<td>' . $row[3] . '</td>';
+    echo '<td>' . $row[4] . '</td>';
+    echo '<td>' . $row[5] . '</td>';
+    echo '<td>' . $row[6] . '</td>';
+    echo '<td>' . $row[7] . '</td>';
+    echo '<td>' . $row[8] . '</td>';
+    echo '<td>' . $row[9] . '</td>';
+    echo '<td>' . $row[10] . '</td>';
+    echo '<td>' . $row[11] . '</td>';
+    echo '<td>' . $row[12] . '</td>';
+    echo '<td>' . $row[13] . '</td>';
+    echo '<td>' . $row[14] . '</td>';
+    echo "</tr>"; 
+    // }
+  }
 }
 
-echo "</tr> <tbody> </table> </div>";
+echo "</tbody></table></div></div>";
 
 echo <<<_TAIL1
-</div>
 </body>
+<div class="main" style="top: 200;">
+  <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center" style="position: relative;">
+    <h4> This is the end </h4>
+    <p> Thank you </p>
+    <p> Thanks w3schools for the website template </p>
+  </footer>
+</div>
+</html>
 _TAIL1;
-// include 'footer.html';
-echo "</html>";
 
 ?>
