@@ -16,6 +16,10 @@ _HEAD1;
 
 include 'menuf.php';
 
+/**
+ * Log in to the MySQL database.
+ * $db_hostname, $db_username, $db_password, $db_database are set in the login.php.
+ */
 $db_server = mysql_connect($db_hostname, $db_username, $db_password);
 if (!$db_server) die("Unable to connect to database: " . mysql_error());
 mysql_select_db($db_database, $db_server) or die("Unable to select database: " . mysql_error());
@@ -87,15 +91,105 @@ echo '<div style="position: abusolute; top=20px;"> Currently selected Suppliers:
 for ($j = 0; $j < $rows; ++$j) {
   if ($sact[$j] == 1) {
     echo $snm[$j];
+    /**
+     * Save the choosen Suppliers into an array. This could be used as a query key in MySQL.
+     * @param int $sup The ManuID for each manufacturers, the id in the database is from 1 to 5, so here use $j+1.
+     */
+    $sup[] = $j+1;
+    $sup_name[] = $snm[$j];
     echo " ";
   }
 }
+echo "<br>Below is the top 3 samples for each Supplier";
+echo "</form></div>";
+
+/**
+ * Log in to the MySQL database.
+ * $db_hostname, $db_username, $db_password, $db_database are set in the login.php.
+ */
+$db_server = mysql_connect( $db_hostname, $db_username, $db_password );
+if ( !$db_server )die( "Unable to connect to database: " . mysql_error() );
+mysql_select_db( $db_database, $db_server )or die( "Unable to select database: " . mysql_error() );
+
+/**
+ * Add the title for the table.
+ */
+echo <<<_TABLE1
+<div class="table-wrapper" align="bottom" style="position:absolute;top:700px;">
+    <table class="fl-table">
+        <thead>
+        <tr>
+            <th> Suppliers </th>
+            <th> id </th>
+            <th>natm</th>
+            <th>ncar</th>
+            <th>nnit</th>
+            <th>noxy</th>
+            <th>nsul</th>
+            <th>ncycl</th>
+            <th>nhdon </th>
+            <th>nhacc</th>
+            <th>nrotb</th>
+            <th>ManuID</th>
+            <th>catn</th>
+            <th>mw</th>
+            <th>TPSA</th>
+            <th>XLogP</th>
+        </tr>
+        </thead>
+        <tbody>
+_TABLE1;
+
+for($j = 0 ; $j < sizeof($sup) ; ++$j)
+{
+  // echo $sup[$j];
+  // echo $sup_name[$j];
+    // if ($sup[$j]) {
+        $query = "SELECT * FROM Compounds WHERE ManuID=$sup[$j] limit 3";
+        $result = mysql_query($query);
+        if(!$result) die("unable to process query: " . mysql_error());
+        // $rows = mysql_fetch_row($result);
+        // echo $sup[$j];
+        // echo $query;
+        // echo $result;
+        // echo $row[1];
+        while($row = mysql_fetch_row($result)) {
+          // echo "编号：".$row[0]."，用户名: " . $row[1]. "<br>";
+        
+        // echo $row[1];
+        // print_r($rows);
+        // print_r($rows);
+        echo "<tr>";
+        echo "<td>";
+        echo $sup_name[$j];
+        echo "</td>";
+        echo '<td>' . $row[0] . '</td>';
+        echo '<td>' . $row[1] . '</td>';
+        echo '<td>' . $row[2] . '</td>';
+        echo '<td>' . $row[3] . '</td>';
+        echo '<td>' . $row[4] . '</td>';
+        echo '<td>' . $row[5] . '</td>';
+        echo '<td>' . $row[6] . '</td>';
+        echo '<td>' . $row[7] . '</td>';
+        echo '<td>' . $row[8] . '</td>';
+        echo '<td>' . $row[9] . '</td>';
+        echo '<td>' . $row[10] . '</td>';
+        echo '<td>' . $row[11] . '</td>';
+        echo '<td>' . $row[12] . '</td>';
+        echo '<td>' . $row[13] . '</td>';
+        echo '<td>' . $row[14] . '</td>';
+        echo "</tr>"; 
+        // }
+    }
+}
+
+echo "</tr> <tbody> </table> </div>";
 
 echo <<<_TAIL1
-</form> 
-</div>
 </div>
 </body>
-</html>
 _TAIL1;
+// include 'footer.html';
+echo "</html>";
+
 ?>
