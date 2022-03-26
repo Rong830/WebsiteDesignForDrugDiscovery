@@ -16,24 +16,29 @@ _HEAD1;
   $_SESSION['surname'] = $_POST['sn'];
   $smask =  $_SESSION['supmask'];
   echo <<<_TAIL1
-<pre>
+<img src="http://mscidwd.bch.ed.ac.uk/s2160628/images/header_background.jpg" style="width:100%;">
+<div align="center">
+<h1>Welcome to this website!</h1>
+<p>You can start your searching and find more information about the database by cliking on the links!</p>
 
-<!-- Help -->
-<div class="w3-container w3-padding-64 w3-center" id="Help">
-  <h2> About This Website </h2>
-  <p> This web using </p>
+<p><a href=="http://mscidwd.bch.ed.ac.uk/s2160628/phelp.php"> About this website </a></p>
+
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p1.php"> Select Suppliers </a></p>
+
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p2.php"> Search Compounds </a></p>
+
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p3.php"> Stats </a></p>
+
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p4.php"> Correlations </a></p>
+
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2999999/p8a.php"> Properties by Manufacturer </a></p>
+
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php"> Property search </a></p>
+
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p5.php"> Exit </a></p>
 </div>
-
-
-<div class="w3-container w3-padding-64 w3-center" id="Main">
-<h2> The main functions </h2>
-
-</div>
-
-
-
-</pre>
 </body>
+</html>
 
 _TAIL1;
 include 'footer.html';

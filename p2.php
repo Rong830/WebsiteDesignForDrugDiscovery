@@ -154,7 +154,7 @@ _TABLE;
 if($setpar) {
   $firstsl = False;
   // Define the query, select catn from the Compounds database
-  $compsel = "select catn from Compounds where (";
+  $compsel = "select catn,id,ManuID from Compounds where (";
   // Check which feature have been set by the user and change the query $compsel
   // Atoms
   if (($_POST['natmax'] != "") && ($_POST['natmin']!="")) {
@@ -203,6 +203,9 @@ if($setpar) {
         echo '<table class="fl-table">';
         echo '<thead><tr>';
         echo '<th> Catalogue Name </th>';
+        echo '<th>manufacturer</th>';
+        echo '<th>Smiles String</th>';
+        echo '<th>Structure</th>';
         echo '<th> Link </th>';
         echo '</tr></thead>';
         echo '<tbody>';
@@ -210,10 +213,19 @@ if($setpar) {
         for($j = 0 ; $j < $rows ; ++$j)
         {
           $row = mysql_fetch_row($result);
+          $cid = $row[1];
+          $compselsmi = "select smiles from Smiles where cid = ".$cid;
+          $resultsmi = mysql_query($compselsmi);
+          $smilesrow = mysql_fetch_row($resultsmi);
+          $convurl = "https://cactus.nci.nih.gov/chemical/structure/".urlencode($smilesrow[0])."/image";
+          $convstr = base64_encode(file_get_contents($convurl));
           // echo $row[0],"\n";
           // Show the search result output.
           echo "<tr>";
           echo '<td>' . $row[0] . '</td>';
+          echo '<td>' . $snm[$row[2]-1] . '</td>';
+          echo '<td>' . $smilesrow[0] . '</td>';
+          printf('<td><img src="data:image/gif;base64,%s"></img></td>',$convstr);
           echo "<td><a href='p6.php?id=$row[0]'>More</a></td>";
           echo "</tr>"; 
         }

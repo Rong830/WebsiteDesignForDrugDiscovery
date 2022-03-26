@@ -14,24 +14,19 @@ echo <<<_MENU1
     
     <a class="w3-bar-item w3-button w3-teal" href="http://mscidwd.bch.ed.ac.uk/s2160628/indexp.php"><i class="fa fa-home w3-margin-right"></i> CompLib </a>
 
-    <!-- <a href="/localdisk/www/html/s2160628/indexp.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> About this website </a> -->
+    <a href="http://mscidwd.bch.ed.ac.uk/s2160628/phelp.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> About this website </a>
 
     <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p1.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Select Suppliers </a>
 
     <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p2.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Search Compounds </a>
 
-    <div class="w3-dropdown-hover w3-hide-small">
-        <button class="w3-button" title="Notifications"> Stats <i class="fa fa-caret-down"></i></button>     
-        <div class="w3-dropdown-content w3-card-4 w3-bar-block">
-            <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p3.php" class="w3-bar-item w3-button">Link</a>
-            <a href="#" class="w3-bar-item w3-button">Link</a>
-            <a href="#" class="w3-bar-item w3-button">Link</a>
-        </div>
-    </div>
+    <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p3.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Stats </a>
 
     <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p4.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Correlations </a>
 
-    <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10a.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Property search </a>
+    <a href="http://mscidwd.bch.ed.ac.uk/s2999999/p8a.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Properties by Manufacturer </a>
+
+    <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Property search </a>
 
     <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p5.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Exit </a>        
 </div>

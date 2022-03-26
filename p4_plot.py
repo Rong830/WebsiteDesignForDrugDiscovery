@@ -1,4 +1,4 @@
-#!/localdisk/anaconda3/bin/python                                       
+#!/localdisk/anaconda3/bin/python
 import sys
 # get sys package for file arguments etc
 import pymysql
@@ -6,12 +6,15 @@ import numpy as np
 import scipy.stats as sp
 import matplotlib.pyplot as plt
 import io
-con = pymysql.connect(host='localhost', user='xxx', passwd='xxxx', db='xxx')
+import seaborn as sns
+con = pymysql.connect(host='localhost', user='s2160628', passwd='123456', db='s2160628')
 cur = con.cursor()
+
 if(len(sys.argv) != 4) :
-    print ("Usage: histog.py col name where ; Nparams = ",sys.argv)
+    print ("Usage: p4_plot.py col name where ; Nparams = ",sys.argv)
     sys.exit(-1)
 
+'''
 col1 = sys.argv[1]
 col2 = sys.argv[3]
 xname = sys.argv[2]
@@ -25,9 +28,10 @@ num_bins = 20
 n, bins, patches = plt.hist(ads, num_bins, density=0, facecolor='blue', alpha=0.5)
 plt.xlabel(xname)
 plt.ylabel('N')
+'''
+
 image = io.BytesIO()
-#save the figure to the internal buffer
-plt.savefig(image,format='png') 
-#unformatted write of buffer
+plt.savefig(image,format='png')
 sys.stdout.buffer.write(image.getvalue())
+#plt.show()
 con.close()
