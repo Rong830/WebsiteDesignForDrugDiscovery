@@ -8,6 +8,10 @@ echo<<<_HEAD1
 
 <link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/check_box.css">
 <link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/table.css">
+<link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/highlight-9.5.0.min.css">
+<link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/checkbix.min.css">
+<link rel="stylesheet" href="http://mscidwd.bch.ed.ac.uk/s2160628/css/demo.css">
+
 
 <style>
 .main{
@@ -20,7 +24,6 @@ echo<<<_HEAD1
 </style>
 
 <head>
-<link href="style/mybasic.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 _HEAD1;
@@ -33,7 +36,8 @@ This is the correlation Page
     </pre>
 _MAIN1;
 // The input radio form
-echo '<form action="p4.php" method="post"><pre>';
+echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:300px;">';
+echo '<form action="p4.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;"><pre>';
 for($j = 0 ; $j <sizeof($dbfs) ; ++$j) {
   if($j == 0) {
     printf(' %15s <input type="radio" name="tgval" value="%s" checked"/> %15s <input type="radio" name="tgvalb" value="%s" checked"/>',$nms[$j],$dbfs[$j],$nms[$j],$dbfs[$j]);
@@ -42,9 +46,10 @@ for($j = 0 ; $j <sizeof($dbfs) ; ++$j) {
   }
   echo "\n";
 } 
-echo '<input type="submit" value="OK" />';
-echo '</pre></form>';
+echo '<p><button type="reset" class="w3-button w3-center"> Reset </button><input type="submit" class="w3-button w3-center w3-theme" value="Done" /></p>';
+echo '</pre></form></div>';
 
+echo '<div class="table-wrapper" align="center" style="position:relative;top:300px;">';
 if(isset($_POST['tgval']) && isset($_POST['tgvalb'])) 
   {
     $chosen = 0;
@@ -85,19 +90,27 @@ if(isset($_POST['tgval']) && isset($_POST['tgvalb']))
     // echo $comtodo;
     printf(" Correlation for %s (%s) vs %s (%s) <br />\n",$dbfs[$chosen],$nms[$chosen],$dbfs[$chosenb],$nms[$chosenb]);
 
-    #print($comtodo);
+    // print($comtodo);
     $rescor = system($comtodo);
     printf("\n");
 
     // Adding plots using python scripts
     $comtodo = "./p4_plot.py ".$dbfs[$chosen]." ".$dbfs[$chosenb]." \"".$mansel."\"";
     $output = base64_encode(shell_exec($comtodo));
-    echo $output;
-    // echo '<pre><img src="data:image/png;base64,'.$output.'" class="center"/></pre>';
+    // echo $output;
+    echo '<pre><img src="data:image/png;base64,'.$output.'" class="center"/></pre>';
   }
 
 echo <<<_TAIL1
+</div></div>
 </body>
+<div class="main" style="top: 300;">
+  <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center" style="position: relative;">
+    <h4> This is the end </h4>
+    <p> Thank you </p>
+    <p> Thanks w3schools for the website template </p>
+  </footer>
+</div>
 </html>
 _TAIL1;
 
