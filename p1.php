@@ -24,23 +24,36 @@ echo <<<_HEAD1
 <body>
 _HEAD1;
 
+// Add the menuf.php (the navigator) at the top of page
 include 'menuf.php';
 
 /**
  * Log in to the MySQL database.
  * $db_hostname, $db_username, $db_password, $db_database are set in the login.php.
+ * @param str $query the query need to be searched in the database
+ * @param str $result the search reasult using the "$query"
+ * @param int $rows the number of rows in the result
  */
 $db_server = mysql_connect($db_hostname, $db_username, $db_password);
+// Raise error when the conection failed.
 if (!$db_server) die("Unable to connect to database: " . mysql_error());
+// Raise error when the unable to select database
 mysql_select_db($db_database, $db_server) or die("Unable to select database: " . mysql_error());
+// Define the query, select everything form the Manufactures database
 $query = "select * from Manufacturers";
+// Save the results
 $result = mysql_query($query);
+// Raise error when failed search the query
 if (!$result) die("unable to process query: " . mysql_error());
+// Save the number of rows in the results
 $rows = mysql_num_rows($result);
 $smask = $_SESSION['supmask'];
 for ($j = 0; $j < $rows; ++$j) {
+  // Read the results row by row
   $row = mysql_fetch_row($result);
+  // Store the id in $sid
   $sid[$j] = $row[0];
+  // Store the name in $snm
   $snm[$j] = $row[1];
   $sact[$j] = 0;
   $tvl = 1 << ($sid[$j] - 1);
@@ -48,8 +61,11 @@ for ($j = 0; $j < $rows; ++$j) {
     $sact[$j] = 1;
   }
 }
+// Check if the check box has set the supplier
 if (isset($_POST['supplier'])) {
+  // Store the choosen supplier from the previous form in $supplier
   $supplier = $_POST['supplier'];
+  // Store the number of the suppliers that were choosen by user
   $nele = sizeof($supplier);
   for ($k = 0; $k < $rows; ++$k) {
     $sact[$k] = 0;
@@ -72,6 +88,7 @@ if (isset($_POST['supplier'])) {
  */
 echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:300px;"> <form action="p1.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">';
 echo '<h2> Select the manufactures that you are interseted in. </h2>';
+// Below is the check box
 for($j = 0 ; $j < $rows ; ++$j)
 {
   echo '<label> <input type="checkbox" name="supplier[]" value="';
@@ -126,7 +143,6 @@ mysql_select_db( $db_database, $db_server )or die( "Unable to select database: "
  * Warped the table under a <div> label with relative position.
  */
 echo <<<_TABLE1
-
   <div class="table-wrapper" align="center" style="position:relative;top:300px;">
   <p> Below is the top 3 samples for each Supplier </p>
   <table class="fl-table">
@@ -153,6 +169,11 @@ echo <<<_TABLE1
     <tbody>
 _TABLE1;
 
+
+/**
+ * Exhibit the information from Compounds database.
+ * Show the top 3 result using 'limit 3' in MySQL, so the output won't be too much.
+ */
 for($j = 0 ; $j < sizeof($sup) ; ++$j)
 {
   // echo $sup[$j];
@@ -196,6 +217,8 @@ for($j = 0 ; $j < sizeof($sup) ; ++$j)
 
 echo "</tbody></table></div></div>";
 
+// Add a footer at the bottom of this page. Since I used relative position, so this footer can adjust to the previous search result.
+// I used 'top:200' to make sure this footer won't connect to the end of previous table.
 echo <<<_TAIL1
 </body>
 <div class="main" style="top: 200;">
