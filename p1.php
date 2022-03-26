@@ -39,7 +39,7 @@ $db_server = mysql_connect($db_hostname, $db_username, $db_password);
 if (!$db_server) die("Unable to connect to database: " . mysql_error());
 // Raise error when the unable to select database
 mysql_select_db($db_database, $db_server) or die("Unable to select database: " . mysql_error());
-// Define the query, select everything form the Manufactures database
+// Define the query, select everything from the Manufactures database
 $query = "select * from Manufacturers";
 // Save the results
 $result = mysql_query($query);
