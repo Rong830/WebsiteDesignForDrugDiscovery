@@ -87,7 +87,7 @@ if (isset($_POST['supplier'])) {
  * @param str $snm the manufactures form the SQL database.
  */
 echo '<div class="main" style="top: -200px;"><div class="container" style="position: relative; top:300px;"> <form action="p1.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">';
-echo '<h2> Select the manufactures that you are interseted in. </h2>';
+echo '<h2> Select the manufacturer(s) that you are interseted in. </h2>';
 // Below is the check box
 for($j = 0 ; $j < $rows ; ++$j)
 {

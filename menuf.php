@@ -24,9 +24,9 @@ echo <<<_MENU1
 
     <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p4.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Correlations </a>
 
-    <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p8a.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Properties by Manufacturer </a>
+    <!-- <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p8a.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Properties by Manufacturer </a> -->
 
-    <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Property search </a>
+    <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Property Search </a>
 
     <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p5.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Exit </a>        
 </div>

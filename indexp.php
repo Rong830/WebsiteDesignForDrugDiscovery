@@ -21,21 +21,21 @@ _HEAD1;
 <h1>Welcome to this website!</h1>
 <p>You can start your searching and find more information about the database by cliking on the links!</p>
 
-<p><a href=="http://mscidwd.bch.ed.ac.uk/s2160628/phelp.php"> About this website </a></p>
+<p>For more information and guidance, you can click: <a href=="http://mscidwd.bch.ed.ac.uk/s2160628/phelp.php"> About this website </a></p>
 
-<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p1.php"> Select Suppliers </a></p>
+<p>Choose the Suppliers that you are interested in by clicking: <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p1.php"> Select Suppliers </a></p>
 
-<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p2.php"> Search Compounds </a></p>
+<p>Filtering compounds by its atom numbers clicking: <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p2.php"> Search Compounds </a></p>
 
-<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p3.php"> Stats </a></p>
+<p>Find out the statistics about the database, you can click: <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p3.php"> Stats </a></p>
 
-<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p4.php"> Correlations </a></p>
+<p>Visualizing and looking for the correlation between features go here: <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p4.php"> Correlations </a></p>
 
-<p><a href="http://mscidwd.bch.ed.ac.uk/s2999999/p8a.php"> Properties by Manufacturer </a></p>
+<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p8a.php"> Properties by Manufacturer </a></p>
 
-<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php"> Property search </a></p>
+<p>If you are interested in the <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php"> Property search </a></p>
 
-<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p5.php"> Exit </a></p>
+<p>Click here to exit: <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p5.php"> Exit </a></p>
 </div>
 </body>
 </html>

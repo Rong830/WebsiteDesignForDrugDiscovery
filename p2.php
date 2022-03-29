@@ -206,7 +206,7 @@ if($setpar) {
         echo '<th>manufacturer</th>';
         echo '<th>Smiles String</th>';
         echo '<th>Structure</th>';
-        echo '<th> Link </th>';
+        echo '<th> More Details </th>';
         echo '</tr></thead>';
         echo '<tbody>';
         // Show the results row by row
@@ -227,7 +227,6 @@ if($setpar) {
           echo '<td>' . $smilesrow[0] . '</td>';
           printf('<td><img src="data:image/gif;base64,%s"></img></td>',$convstr);
           echo "<td><a href='p6.php?id=$row[0]'>More</a></td>";
-          echo "</tr>"; 
         }
         echo "</tbody></table></div>";
       }

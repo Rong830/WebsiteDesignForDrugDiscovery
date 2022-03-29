@@ -5,8 +5,6 @@ include 'redir.php';
 echo<<<_HEAD1
 <html>
 <head>
-<script type="text/javascript" src="jquery-3.3.1.min.js"></script>
-<script type="text/javascript" src="jquery.tablesorter.min.js"></script>
 </head>
 <body>
 _HEAD1;
@@ -25,11 +23,11 @@ $manarray = array();
 $manid = array();
 $chosen = $_POST['tgval'];
 for($j = 0 ; $j < $manrows ; ++$j)
-  {
+{
     $row = mysql_fetch_row($result);
     $manarray[$j] = $row[1];
     $manid[$j] = $j + 1;
-  }
+}
 $query = "select * from Compounds where ManuID = ".$chosen;
 $result = mysql_query($query);
 if(!$result) die("unable to process query: " . mysql_error());
@@ -40,23 +38,23 @@ This is the Manufacturer display page
 _MAIN1;
     echo "<table id=\"myTable\" class=\"tablesorter\" width =\"70%\" border=\"2\" cellspacing=\"1\" align=\"center\"><thead><tr>";
     for($k = 0 ; $k < sizeof($dbfs) ; ++$k) {
-      echo "<th>".$nms[$k]."</th>";
+        echo "<th>".$nms[$k]."</th>";
     }
     echo "</tr>\n</thead>\n<tbody>\n";
     for($j = 0 ; $j < $resrows ; ++$j)
-      {
-         $row = mysql_fetch_row($result);
-         echo "<tr>";
-         for($k = 0 ; $k < sizeof($dbfs) ; ++$k) {
-           echo "<td>".$row[$rowid[$k]]."</td>";
-         }
-         echo "</tr>\n";
-      }
-      echo "</tbody>\n</table>\n";
+    {
+        $row = mysql_fetch_row($result);
+        echo "<tr>";
+        for($k = 0 ; $k < sizeof($dbfs) ; ++$k) {
+        echo "<td>".$row[$rowid[$k]]."</td>";
+        }
+        echo "</tr>\n";
+    }
+    echo "</tbody>\n</table>\n";
 echo <<<_TAIL1
 <script type="text/javascript">
 $(function() {
-  $("#myTable").tablesorter();
+    $("#myTable").tablesorter();
 });
 </script>
 </body>
