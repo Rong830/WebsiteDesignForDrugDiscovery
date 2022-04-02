@@ -37,15 +37,17 @@ for ($j = 0; $j < $rows; ++$j) {
 echo <<<_SELECT
 
 _SELECT;
-
+$page = isset($_GET['page'])  ? $_GET['page']  : 1;
 echo <<<_MAIN1
 <div class="container" style="position: relative; top:100px;">
 <h1>This is the Property search page</h1>
 </div>
 <div class="container" style="position: relative; top:200px;">
-<form action="p10b.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">
+<form action="p10b.php" method="GET" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">
     Please choose one feature to display.
-    <label><input type="radio" name="tgval" value="mw" checked"/><span>Molecular Weight (MW)</span></label>
+    <input type='hidden' name='page' value='{$page }'>
+   
+    <label><input type="radio" name="tgval"  value="mw" /><span>Molecular Weight (MW)</span></label>
     <label><input type="radio" name="tgval" value="TPSA"/><span>Topological Polar Surface Area (TPSA)</span></label>
     <label><input type="radio" name="tgval" value="XlogP"/><span>Estimated LogP (XlogP)</span></label>
 
@@ -67,35 +69,41 @@ echo <<<_MAIN1
 
 <p> Note: You should choose one feature above and enter a valid value before press submit.</p>
 
-    <span> Please enter a Value to search </span><input type="text" name="cval"/>
+    <span> Please enter a Value to search </span><input type="text"  value="" name="cval"/>
     <button type="reset" class="w3-button w3-center"> Reset </button><input type="submit" class="w3-button w3-center w3-theme" value="Done" />
 </form>
 </div>
 _MAIN1;
 
+$p = new Page();
 echo '<div class="table-wrapper" align="center" style="position:relative;top:300px;">';
-if (($_POST['tgval'] != "") && ($_POST['cval'] != "")) {
+
+$compsel = "select * from Compounds ";
+$count = "select count(*) from Compounds ";
+if (($_GET['tgval'] != "") && ($_GET['cval'] != "")) {
     $mychoice = get_post('tgval');
     $myvalue = get_post('cval');
-    $compsel = "select * from Compounds where ";
     if ($mychoice == "mw") {
-        $compsel = $compsel . "( mw > " . ($myvalue - 1.0) . " and  mw < " . ($myvalue + 1.0) . ")";
+        $compsel = $compsel . " where ( mw > " . ($myvalue - 1.0) . " and  mw < " . ($myvalue + 1.0) . ")";
+        $count = $count . " where ( mw > " . ($myvalue - 1.0) . " and  mw < " . ($myvalue + 1.0) . ")";
     }
     if ($mychoice == "TPSA") {
-        $compsel = $compsel . "( TPSA > " . ($myvalue - 0.1) . " and  TPSA < " . ($myvalue + 0.1) . ")";
+        $compsel = $compsel . " where ( TPSA > " . ($myvalue - 0.1) . " and  TPSA < " . ($myvalue + 0.1) . ")";
+        $count = $count . " where( TPSA > " . ($myvalue - 0.1) . " and  TPSA < " . ($myvalue + 0.1) . ")";
     }
     if ($mychoice == "XlogP") {
-        $compsel = $compsel . "( XlogP > " . ($myvalue - 0.1) . " and  XlogP < " . ($myvalue + 0.1) . ")";
+        $compsel = $compsel . " where ( XlogP > " . ($myvalue - 0.1) . " and  XlogP < " . ($myvalue + 0.1) . ")";
+        $count = $count . " where ( XlogP > " . ($myvalue - 0.1) . " and  XlogP < " . ($myvalue + 0.1) . ")";
     }
-    echo "<pre>";
-    //    echo $compsel;
-    echo "\n";
-    $result = mysql_query($compsel);
+    $p->setCount(mysql_query($count));
+    $result = mysql_query($compsel . " order by id desc " . $p->limit());
     if (!$result) die("unable to process query: " . mysql_error());
     $rows = mysql_num_rows($result);
-    if ($rows > 10000) {
-        echo "Too many results ", $rows, " Max is 10000\n";
-    } else {
+    $p->setCount(mysql_query($count));
+
+$result = mysql_query($compsel . " order by id desc " . $p->limit());
+if (!$result) die("unable to process query: " . mysql_error());
+$rows = mysql_num_rows($result);
     echo <<<_TABLE1
 <table class="fl-table">
 <thead>
@@ -123,10 +131,8 @@ _TABLE1;
             echo "</tr>";
         }
         echo "</table>";
-    }
-} else {
-    echo "No Query Given\n";
-}
+
+echo  $p->showPages() ;
 echo "</pre></div>";
 echo <<<_TAIL1
 </body>
@@ -139,7 +145,10 @@ echo <<<_TAIL1
 </div>
 </html>
 _TAIL1;
+
+}
+
 function get_post($var)
 {
-    return mysql_real_escape_string($_POST[$var]);
+    return mysql_real_escape_string($_GET[$var]);
 }

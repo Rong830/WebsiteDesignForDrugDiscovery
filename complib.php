@@ -37,7 +37,9 @@ ref: blog.csdn.net/qq_32623363/article/details/77101971
 
 <body>
 _HEAD1;
+
 $db_server = mysql_connect($db_hostname, $db_username, $db_password);
+
 if (!$db_server) die("Unable to connect to database: " . mysql_error());
 mysql_select_db($db_database, $db_server) or die("Unable to select database: " . mysql_error());
 $query = "select * from Manufacturers";
@@ -65,6 +67,13 @@ if(fail =="") return true
 </script>
 
 <div class="main">
+<h1 style="text-align: center;
+top: 100px;
+position: fixed;
+font-weight: bold;
+width: 100%;
+left: 0;
+right: 0;"> Welcome to CompLib! </h1>
    <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="indexp.php" method="post" onSubmit="return validate(this)">
 
       <div class="w3-section">

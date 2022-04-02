@@ -36,6 +36,7 @@ This is the correlation Page
     </pre>
 _MAIN1;
 // The input radio form
+echo '<h2 style="text-align: center">Choose two correlation that you are interested in </h2>';
 echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:300px;">';
 echo '<form action="p4.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;"><pre>';
 for($j = 0 ; $j <sizeof($dbfs) ; ++$j) {
@@ -45,25 +46,27 @@ for($j = 0 ; $j <sizeof($dbfs) ; ++$j) {
     printf(' %15s <input type="radio" name="tgval" value="%s"/>  %15s <input type="radio" name="tgvalb" value="%s"/>',$nms[$j],$dbfs[$j],$nms[$j],$dbfs[$j]);
   }
   echo "\n";
-} 
+}
+$tgvalSelect .= "</select>";
+$tgvalbSelect = "</select";
 echo '<p><button type="reset" class="w3-button w3-center"> Reset </button><input type="submit" class="w3-button w3-center w3-theme" value="Done" /></p>';
 echo '</pre></form></div>';
 
 echo '<div class="table-wrapper" align="center" style="position:relative;top:300px;">';
-if(isset($_POST['tgval']) && isset($_POST['tgvalb'])) 
+if(isset($_POST['tgval']) && isset($_POST['tgvalb']))
   {
     $chosen = 0;
     $tgval = $_POST['tgval'];
     $tgvalb = $_POST['tgvalb'];
     for($j = 0 ; $j <sizeof($dbfs) ; ++$j) {
-      if(strcmp($dbfs[$j],$tgval) == 0) $chosen = $j; 
-    } 
+      if(strcmp($dbfs[$j],$tgval) == 0) $chosen = $j;
+    }
     for($j = 0 ; $j <sizeof($dbfs) ; ++$j) {
       if(strcmp($dbfs[$j],$tgvalb) == 0) $chosenb = $j;
     }
     $db_server = mysql_connect($db_hostname,$db_username,$db_password);
     if(!$db_server) die("Unable to connect to database: " . mysql_error());
-    mysql_select_db($db_database,$db_server) or die ("Unable to select database: " . mysql_error());     
+    mysql_select_db($db_database,$db_server) or die ("Unable to select database: " . mysql_error());
     $query = "select * from Manufacturers";
     $result = mysql_query($query);
     if(!$result) die("unable to process query: " . mysql_error());

@@ -91,7 +91,7 @@ $db_server = mysql_connect($db_hostname,$db_username,$db_password);
 // Raise error when the conection failed.
 if(!$db_server) die("Unable to connect to database: " . mysql_error());
 // Raise error when the unable to select database
-mysql_select_db($db_database,$db_server) or die ("Unable to select database: " . mysql_error());     
+mysql_select_db($db_database,$db_server) or die ("Unable to select database: " . mysql_error());
 // Define the query, select everything form the Manufactures database
 $query = "select * from Manufacturers";
 $result = mysql_query($query);
@@ -115,7 +115,7 @@ for($j = 0 ; $j < $rows ; ++$j)
       }
   }
 $mansel = $mansel.")";
-$setpar = isset($_POST['natmax']); 
+$setpar = isset($_POST['natmax']);
 
 // Beatified the input box.
 // Using the label <pre> can show the same format as what I wrote under this label. So the same feature for max and min can be in the same line.
@@ -123,10 +123,10 @@ echo <<<_TABLE
 <div style="position: relative;top: 100; bottom: 200;" align="center">
 <h>PLease enter the range you want to search (both max and min)</h>
 <form action="p2.php" method="post"><pre>
-      Max Atoms     <input type="text" id="natmax" name="natmax">    Min Atoms      <input type="text" id="natmin" name="natmin"></p>
-      Max Carbons   <input type="text" id="ncrmax" name="ncrmax">    Min Carbons    <input type="text" id="ncrmiin" name="ncrmiin"></p>
-      Max Nitrogens <input type="text" id="nntmax" name="nntmax">    Min Nitrogens  <input type="text" id="nntmin" name="nntmin"></p>
-      Max Oxygens   <input type="text" id="noxmax" name="noxmax">    Min Oxygense   <input type="text" id="noxmin" name="noxmin"></p>
+      Max Atoms     <input type="text" id="natmax"  placeholder="81 is max Atoms in selected dataset" name="natmax">    Min Atoms      <input type="text" id="natmin"  placeholder="14 is min Atoms in selected dataset" name="natmin"></p>
+      Max Carbons   <input type="text" id="ncrmax"  placeholder="37 is max Carbons in selected dataset" name="ncrmax">    Min Carbons    <input type="text" id="ncrmiin"   placeholder="3 is min Carbons in selected dataset" name="ncrmiin"></p>
+      Max Nitrogens <input type="text" id="nntmax"  placeholder="4 is max Nitrogens in selected dataset" name="nntmax">    Min Nitrogens  <input type="text" id="nntmin"   placeholder="2 is min Carbons in selected dataset" name="nntmin"></p>
+      Max Oxygens   <input type="text" id="noxmax" placeholder="4 is max Oxygense in selected dataset" name="noxmax">    Min Oxygense   <input type="text" id="noxmin"  placeholder="3 is min Carbons in selected dataset" name="noxmin"></p>
       <div align="center"><input type="submit" value="List All Results" class="w3-button w3-center w3-theme" /></div>
 </pre></form></div>
 </div>
@@ -187,7 +187,7 @@ if($setpar) {
     echo "<p>Query: $compsel</p>";
     echo "\n";
       // Fetch the result using the query $compsel
-      $result = mysql_query($compsel);
+      $result = mysql_query($compsel . ' limit 10');
       if(!result) die("unable to process query: " . mysql_error());
       $rows = mysql_num_rows($result);
       // Only show results under 100 rows
@@ -225,8 +225,11 @@ if($setpar) {
           echo '<td>' . $row[0] . '</td>';
           echo '<td>' . $snm[$row[2]-1] . '</td>';
           echo '<td>' . $smilesrow[0] . '</td>';
-          printf('<td><img src="data:image/gif;base64,%s"></img></td>',$convstr);
-          echo "<td><a href='p6.php?id=$row[0]'>More</a></td>";
+          echo '<td><img src="' . $convurl.'"> </td>';
+          #printf('<td><img src="data:image/gif;base64,%s"></img></td>',$convstr);
+
+          // Get jsmol using id
+          echo "<td><a href=jmoltest.php?cid=$cid'>More</a></td>";
         }
         echo "</tbody></table></div>";
       }
@@ -234,7 +237,7 @@ if($setpar) {
     echo "No Query Given\n";
   }
   // echo "</pre>";
-} 
+}
 echo "</div>";
 
 echo <<<_TAIL1

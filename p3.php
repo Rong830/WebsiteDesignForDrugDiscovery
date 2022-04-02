@@ -32,13 +32,14 @@ _MAIN1;
  * Make a container for user to choose from different manufactures.
  * @param str $snm the manufactures form the SQL database.
  */
-echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:300px;">';
-// echo '<h2> Select the manufactures that you are interseted in. </h2>';
+echo '<h2 style="text-align: center">Which statics are you interested in. </h2>';
+echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:200px;">';
 // Below is the check box
-echo '<form action="p3.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;">';
+echo '<form action="p3.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;justify-content: center;
+-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: row;">';
 for ($j = 0; $j < sizeof($dbfs); ++$j) {
   if ($j == 0) {
-    echo '<label>';
+    echo '<label style="width: 300px">';
     echo '<input type="radio" name="tgval" value="';
     echo $dbfs[$j];
     echo'"/> <span>';
@@ -46,7 +47,7 @@ for ($j = 0; $j < sizeof($dbfs); ++$j) {
     echo '</span> </label>';
     // printf(' %15s <input type="checkbox" name="tgval" value="%s" checked"/>', $nms[$j], $dbfs[$j]);
   } else {
-    echo '<label>';
+    echo '<label style="width: 300px">';
     echo '<input type="radio" name="tgval" value="';
     echo $dbfs[$j];
     echo'"/> <span>';
@@ -88,7 +89,7 @@ if (isset($_POST['tgval'])) {
   echo "<tr>";
   echo '<td>' . $row[0] . '</td>';
   echo '<td>' . $row[1] . '</td>';
-  echo "</tr>"; 
+  echo "</tr>";
   echo "</tbody></table>";
 
 
@@ -121,10 +122,10 @@ if (isset($_POST['tgval'])) {
           }
   }
   $mansel = $mansel.")";
-  $comtodo = './histog.py '.$dbfs[$chosen].' "'.$nms[$chosen].'" "'.$mansel.'"'; 
+  $comtodo = './histog.py '.$dbfs[$chosen].' "'.$nms[$chosen].'" "'.$mansel.'"';
   // $comtodo = "./histog.py ".$dbfs[$chosen]." \"".$nms[$chosen]."\" \"".$mansel."\"";         #Prepare command to run external program
   // echo $comtodo;
-  $output = base64_encode(shell_exec($comtodo));                                             #Run command and capture output converting to base64 
+  $output = base64_encode(shell_exec($comtodo));                                             #Run command and capture output converting to base64
   printf('<pre><img src="data:image/gif;base64,%s"></img></pre>',$output);
   }
 
