@@ -123,10 +123,10 @@ echo <<<_TABLE
 <div style="position: relative;top: 100; bottom: 200;" align="center">
 <h>PLease enter the range you want to search (both max and min)</h>
 <form action="p2.php" method="post"><pre>
-      Max Atoms     <input type="text" id="natmax"  placeholder="81 is max Atoms in selected dataset" name="natmax">    Min Atoms      <input type="text" id="natmin"  placeholder="14 is min Atoms in selected dataset" name="natmin"></p>
-      Max Carbons   <input type="text" id="ncrmax"  placeholder="37 is max Carbons in selected dataset" name="ncrmax">    Min Carbons    <input type="text" id="ncrmiin"   placeholder="3 is min Carbons in selected dataset" name="ncrmiin"></p>
-      Max Nitrogens <input type="text" id="nntmax"  placeholder="4 is max Nitrogens in selected dataset" name="nntmax">    Min Nitrogens  <input type="text" id="nntmin"   placeholder="2 is min Carbons in selected dataset" name="nntmin"></p>
-      Max Oxygens   <input type="text" id="noxmax" placeholder="4 is max Oxygense in selected dataset" name="noxmax">    Min Oxygense   <input type="text" id="noxmin"  placeholder="3 is min Carbons in selected dataset" name="noxmin"></p>
+      Max Atoms     <input type="text" id="natmax"  placeholder="≤ 81" name="natmax">    Min Atoms      <input type="text" id="natmin"  placeholder="≥ 14" name="natmin"></p>
+      Max Carbons   <input type="text" id="ncrmax"  placeholder="≤ 37" name="ncrmax">    Min Carbons    <input type="text" id="ncrmiin"   placeholder="≥ 3" name="ncrmiin"></p>
+      Max Nitrogens <input type="text" id="nntmax"  placeholder="≤ 4" name="nntmax">    Min Nitrogens  <input type="text" id="nntmin"   placeholder="≥ 2" name="nntmin"></p>
+      Max Oxygens   <input type="text" id="noxmax" placeholder="≤ 4" name="noxmax">    Min Oxygense   <input type="text" id="noxmin"  placeholder="≥ 3" name="noxmin"></p>
       <div align="center"><input type="submit" value="List All Results" class="w3-button w3-center w3-theme" /></div>
 </pre></form></div>
 </div>
@@ -202,8 +202,8 @@ if($setpar) {
         echo '<div class="table-wrapper" align="center" style="position: relative; top: 00px;">';
         echo '<table class="fl-table">';
         echo '<thead><tr>';
-        echo '<th> Catalogue Name </th>';
-        echo '<th>manufacturer</th>';
+        echo '<th>Catalogue Name </th>';
+        echo '<th>Manufacturer</th>';
         echo '<th>Smiles String</th>';
         echo '<th>Structure</th>';
         echo '<th> More Details </th>';
@@ -229,7 +229,7 @@ if($setpar) {
           #printf('<td><img src="data:image/gif;base64,%s"></img></td>',$convstr);
 
           // Get jsmol using id
-          echo "<td><a href=jmoltest.php?cid=$cid'>More</a></td>";
+          echo "<td><a href=jmoltest.php?cid=$cid>More</a></td>";
         }
         echo "</tbody></table></div>";
       }

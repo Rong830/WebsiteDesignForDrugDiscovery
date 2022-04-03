@@ -1,0 +1,303 @@
+<html>
+<head>
+<link href="style/mybasic.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>COMPLIB Help Page</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <style>
+            body{font-family: optimal, sans-serif;}
+            .mySlide{display: none;}
+            .column {
+                float: left;
+                padding: 5px;
+              }
+              
+              /* Clear floats after image containers */
+              .row::after {
+                content: "";
+                clear: both;
+                display: table;
+              }
+        </style>
+    </head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-black.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- ref: https://www.w3schools.com/w3css/tryit.asp?filename=tryw3css_templates_website&stacked=h -->
+    
+<!-- Navbar -->
+<div class="w3-top">
+    <div class="w3-bar w3-theme-d2 w3-left-align">
+        <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-hover-white w3-theme-d2" href="javascript:void(0);" onclick="openNav()"><i class="fa fa-bars"></i></a>
+        
+        <a class="w3-bar-item w3-button w3-teal" href="http://mscidwd.bch.ed.ac.uk/s2160628/indexp.php"><i class="fa fa-home w3-margin-right"></i> CompLib </a>
+    
+        <a href="http://mscidwd.bch.ed.ac.uk/s2160628/phelp.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> About this website </a>
+    
+        <div class="w3-dropdown-hover w3-hide-small">
+            <button class="w3-button" title="Notifications">Search<i class="fa fa-caret-down"></i></button>     
+            <div class="w3-dropdown-content w3-card-4 w3-bar-block">
+                <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p1.php" class="w3-bar-item w3-button">Suppliers</a>
+                <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p2.php" class="w3-bar-item w3-button">Compounds</a>
+                <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php" class="w3-bar-item w3-button">Property</a>
+            </div>
+        </div>
+    
+        <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p3.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Stats </a>
+    
+        <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p4.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Correlations </a>
+    
+        <!-- <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p8a.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Properties by Manufacturer </a> -->
+    
+        <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p5.php" class="w3-bar-item w3-button w3-hide-small w3-hover-white"> Exit </a>        
+    </div>
+</div>
+
+
+    <body>
+    <!-- Page content -->
+    <div class="w3-content" style="max-width:2000px;margin-top:46px">
+    <!-- Before Starting -->
+        <div class="w3-container  w3-content w3-padding-64 w3-center" style="max-width:1500px" id="Before Starting">
+            <h2 class="w3-wide">Before Starting</h2>
+            <p class="w3-justify">
+                This website is a compounds library. The data are extracted from structure-data files and made into three tabular forms. 
+                <br><br>
+                The tables are the compounds' molecular information, manufacturers, and smiles string.
+                <br><br>        
+                This website is connected with a MySQL database about compounds that allow users to search for compound information. 
+                This website supports many kinds of search methods. 
+                The details are below.
+            </p>
+        </div><!-- Before Starting -->
+    
+    
+        <!-- Home -->
+        <div class="w3-container  w3-content w3-center w3-padding-64" style="max-width:1500px" id="Login">
+            <h2 class="w3-wide">Login and Home page</h2>
+            <p class="w3-justify">
+                The welcome page is shown in Figure 1.
+                The user should enter a valid first and second name (a fake name is also acceptable) before clicking the "Log in" button.
+                <br><br>
+                The home page is shown in Figure 2.
+                This is the home page for this website, the user can go to each page through the links in the content or through the Navbar.
+            <br><br>
+            <a href="http://mscidwd.bch.ed.ac.uk/s2160628/indexp.php" style="color: blue">Go back to Home Page</a><br>
+            </p>
+            
+            <div class="row">
+                <div class="column">
+                    <p>Figure 1. Welcome Page</p>
+                    <img src="./images/Welcome_page.png" class="w3-round w3-margin-bottom" alt="Welcome_page" style="width:50%">
+                </div>
+                <div class="column">
+                    <p>Figure 2. Home Page</p>
+                    <img src="./images/Home.png" class="w3-round" alt="Random Name" style="width:50%">
+                </div>
+            </div>
+        </div><!-- Home -->
+    
+    
+        <!-- Search -->
+        <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1500px" id="Search">
+            <h2 class="w3-wide">Search</h2>
+            <p class="w3-justify">
+                The compounds are from five different manufacturers in the database, and all of them have 12 different features.
+                <br><br>
+                Figure 3 searches all the compounds through their manufacturers. 
+                The users only need to select the manufacturers they are interested in and hit "Done."
+                <br><br>
+                The output table will only show ten records on each page. 
+                Users can click the "next page" or the page number to go to the other pages.
+            <br><br>
+            <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p1.php" style="color: blue">Go to Search Manufacturers Page</a><br></p>
+    
+            <div class="w3-row w3-padding-32">
+                <div class="w3-one">
+                    <p>Figure 3. Search Manufacturers</p>
+                    <img src="./images/manufacturers.png" class="w3-round w3-margin-bottom" alt="manufacturers" style="width:50%">
+                </div>
+            </div>
+    
+            <p class="w3-justify">
+                Figure 4 is the home page for the Compounds search page. 
+                Users can input a range of Atomes, Carbons, Nitrogens, and Oxygens. 
+                Then the model will search all the compounds within this range.
+                <br><br>
+                Note: Users have to enter both the max and min for the feature they are interested in.
+                <br><br>
+                After the users choose their range and hit "List All Results," the output information is in a table, as shown in Figure 5.
+                It includes the Catalogue Name, Manufacturer, Smiles String, and the structure graph for the compounds.
+                <br><br>
+                The users can sort the form by clicking the sorting feature's table head.
+                <br><br>
+                If the users are interested in the 3D structure of the compound, they can click the "More" link for a 3D structure display page, as shown in Figure 6.
+                Users can spin the compound to learn its detailed structure.
+            <br><br>
+            <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p2.php" style="color: blue">Go to Search Compounds Page</a><br></p>
+            </p>
+    
+            <div class="w3-row w3-padding-32">
+                <div class="w3-third">
+                    <p>Figure 4. Compounds Search Page</p>
+                    <img src="./images/p2_home.png" class="w3-round" alt="Random Name" style="width:90%">
+                </div>
+                <div class="w3-third">
+                    <p>Figure 5. Compounds Output Results</p>
+                    <img src="./images/p2_out.png" class="w3-round" alt="Random Name" style="width:90%">
+                </div>
+                <div class="w3-third">
+                    <p>Figure 6. 3D Structure Display</p>
+                    <img src="./images/p2_3D.png" class="w3-round w3-margin-bottom" alt="Random Name" style="width:90%">
+                </div>
+            </div>
+
+            <p class="w3-justify">
+                Figure 7 is the Property Search page, and the users can first choose from molecular weight, topological polar surface area, and estimated LogP.
+                <br><br>
+                Then, the users need to enter a valid number before hitting "Done."
+                <br><br>
+                So the users can search these three features through their properties, and the results are in Figure 8.
+                As usual, only ten records will be shown on the first page, but the users can choose to go to the other pages.
+                <br><br>
+                <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p10b.php" style="color: blue">Go to Search Property Page</a><br></p>
+            </p>
+
+            <div class="w3-row w3-padding-32">
+                <div class="w3-one">
+                    <p>Figure 7. Search Through Property</p>
+                    <img src="./images/p10b.png" class="w3-round w3-margin-bottom" alt="manufacturers" style="width:50%">
+                </div>
+                <div class="w3-one">
+                    <p>Figure 8. Search Through Property Results</p>
+                    <img src="./images/p10b_out.png" class="w3-round w3-margin-bottom" alt="manufacturers" style="width:50%">
+                </div>
+            </div>
+        </div><!-- Search -->
+    
+    
+        <!-- Stats -->
+        <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1500px" id="Stats">
+            <h2 class="w3-wide">Stats Page</h2>
+            <p class="w3-justify">
+                The users can have a basic knowledge about the data set through this page in Figure 9.
+                <br><br>
+                To compute the statistic of 12 properties, all chemicals from five manufacturers are employed.
+                The users can choose the feature that they are interested in. The output results are shown in Figure 10.
+                <br><br>
+                <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p3.php" style="color: blue">Go to Stats Page</a><br>
+            </p>
+            
+            <div class="w3-row w3-padding-32">
+                <div>
+                    <p>Figure 9. Correlation Calculation</p>
+                    <img src="./images/p3.png" class="w3-round w3-margin-bottom" alt="manufacturers" style="width:50%">
+                </div>
+                <div>
+                    <p>Figure 10. Correlation Calculation Results</p>
+                    <img src="./images/p3_out.png" class="w3-round w3-margin-bottom" alt="manufacturers" style="width:50%">
+                </div>
+            </div>
+        </div><!-- Stats -->
+    
+        <!-- Correlation -->
+        <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1500px" id="Correlation">
+            <h2 class="w3-wide">Correlation Calculation</h2>
+            <p class="w3-justify">
+                Here is the page that can calculate the correlation between two features in Figure 11.
+                <br><br>
+                The users need to choose two features from both the left and right sides of the checkbox before hitting the submit button.
+                <br><br>
+                After that, it will calculate the correlation value and plot the density plot for the two selected features, as shown in Figure 12.
+                <br><br>
+                <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p4.php" style="color: blue">Go to Correlation Calculation Page</a><br>
+            </p>
+
+            <div class="w3-row w3-padding-32">
+                <div>
+                    <p>Figure 11. Correlation Calculation</p>
+                    <img src="./images/p4.png" class="w3-round w3-margin-bottom" alt="manufacturers" style="width:50%">
+                </div>
+                <div>
+                    <p>Figure 12. Correlation Calculation Results</p>
+                    <img src="./images/p4_out.png" class="w3-round w3-margin-bottom" alt="manufacturers" style="width:50%">
+                </div>
+            </div>
+        </div><!-- Correlation -->
+    
+
+        <!-- Exit -->
+        <div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1500px" id="Exit">
+            <h2 class="w3-wide">Exit</h2>
+            <p class="w3-justify">
+                When the users hit the "Exit," then they will exit the website.
+                <br><br>
+                They can come back to this website only by re-login.
+                <br><br>
+                <a href="http://mscidwd.bch.ed.ac.uk/s2160628/p5.php" style="color: blue">Exit</a><br>
+            </p>
+        </div><!-- Exit -->
+    </div>
+    
+    
+    
+    
+    
+    
+    <script>
+    // Automatic Slideshow - change image every 4 seconds
+    var myIndex = 0;
+    carousel();
+    
+    function carousel() {
+      var i;
+      var x = document.getElementsByClassName("mySlides");
+      for (i = 0; i < x.length; i++) {
+        x[i].style.display = "none";  
+      }
+      myIndex++;
+      if (myIndex > x.length) {myIndex = 1}    
+      x[myIndex-1].style.display = "block";  
+      setTimeout(carousel, 4000);    
+    }
+    
+    // Used to toggle the menu on small screens when clicking on the menu button
+    function myFunction() {
+      var x = document.getElementById("navDemo");
+      if (x.className.indexOf("w3-show") == -1) {
+        x.className += " w3-show";
+      } else { 
+        x.className = x.className.replace(" w3-show", "");
+      }
+    }
+    
+    // When the user clicks anywhere outside of the modal, close it
+    var modal = document.getElementById('ticketModal');
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+    </script>
+    
+    
+    </body>
+    <!-- Footer -->
+    
+    <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center" style="position: relative;">
+        <h4> This is the end </h4>
+        <p> Thank you </p>
+        <p> Thanks w3schools for the website template </p>
+    </footer>
+    </html>

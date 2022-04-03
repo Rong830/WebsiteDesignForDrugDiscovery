@@ -140,6 +140,7 @@ if (isset($_GET['supplier'])) {
   }
 
   echo join(',', $tmep);
+  echo "<br>Sort the table by clicking the table head";
   echo "</form></div></div>";
 }
 /**

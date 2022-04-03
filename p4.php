@@ -107,7 +107,7 @@ if(isset($_POST['tgval']) && isset($_POST['tgvalb']))
 echo <<<_TAIL1
 </div></div>
 </body>
-<div class="main" style="top: 300;">
+<div class="main" style="top: 200;">
   <footer class="w3-container w3-padding-32 w3-theme-d1 w3-center" style="position: relative;">
     <h4> This is the end </h4>
     <p> Thank you </p>

@@ -38,16 +38,29 @@ $("#mydiv").html(Jmol.getAppletHtml("jmolApplet0",Info))
 _endstart;
 include 'menuf.php';
 echo <<<_endpage
-This illustrates that the applet
-<span id=mydiv></span>
-is inline 
-<p>
+<div class="w3-container w3-content w3-center w3-padding-64" style="max-width:1500px">
+	<h2 class="w3-wide">3D Structure Display</h2>
+	<p>
+	This illustrates that the applet
+	</p>
 
-<a href="javascript:Jmol.script(jmolApplet0, 'spin on')">spin on</a>
+	<div align="center"><span id=mydiv></span></div>
+	is inline 
+	<p>
+	<a href="javascript:Jmol.script(jmolApplet0, 'spin on')">spin on</a>
+	<a href="javascript:Jmol.script(jmolApplet0, 'spin off')">spin off</a>
+	<br><br>
+	</p>
 
-<a href="javascript:Jmol.script(jmolApplet0, 'spin off')">spin off</a>
-</p>
+	<p><a href="http://mscidwd.bch.ed.ac.uk/s2160628/p2.php" style="color: blue">Go Back to Search Compounds Page</a><br></p>
+</div>
 </body>
+<!-- Footer -->
+<footer class="w3-container w3-padding-32 w3-theme-d1 w3-center" style="position: relative;">
+	<h4> This is the end </h4>
+	<p> Thank you </p>
+	<p> Thanks w3schools for the website template </p>
+</footer>
 </html>
 _endpage;
 ?>

@@ -52,8 +52,8 @@ for ($j = 0; $j < $rows; ++$j) {
    $mask = (2 * $mask) + 1;
 }
 $_SESSION['supmask'] = $mask;
+// img source: https://www.alamy.com/
 echo <<<_EOP
-
 <p id="image_logo"><img src="http://mscidwd.bch.ed.ac.uk/s2160628/images/background.png" style="width:100%;"></p>
 
 <script>

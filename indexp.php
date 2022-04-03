@@ -15,6 +15,7 @@ _HEAD1;
   $_SESSION['forname'] = $_POST['fn'];
   $_SESSION['surname'] = $_POST['sn'];
   $smask =  $_SESSION['supmask'];
+// img source: https://stock.adobe.com/uk/images/Chemistry-with-reaction-formula-in-toning/53771947?as_campaign=TinEye&as_content=tineye_match&epi1=53771947&tduid=33d27e61194f6edcacb03f191cc3802f&as_channel=affiliate&as_campclass=redirect&as_source=arvato
   echo <<<_TAIL1
 <img src="http://mscidwd.bch.ed.ac.uk/s2160628/images/header_background.jpg" style="width:100%;">
 <div align="center">

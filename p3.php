@@ -30,7 +30,6 @@ This is the Statistics Page  (not Complete)
 _MAIN1;
 /**
  * Make a container for user to choose from different manufactures.
- * @param str $snm the manufactures form the SQL database.
  */
 echo '<h2 style="text-align: center">Which statics are you interested in. </h2>';
 echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:200px;">';

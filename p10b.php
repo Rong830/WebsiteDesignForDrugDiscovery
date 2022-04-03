@@ -130,7 +130,7 @@ _TABLE1;
             }
             echo "</tr>";
         }
-        echo "</table>";
+        echo "</tbody></table>";
 
 echo  $p->showPages() ;
 echo "</pre></div>";
