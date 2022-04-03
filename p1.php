@@ -90,7 +90,9 @@ if (isset($_POST['supplier'])) {
  * Make a container for user to choose from different manufactures.
  * @param str $snm the manufactures form the SQL database.
  */
-echo '<div class="main" style="top: -200px;"><div class="container" style="position: relative; top:300px;">';
+echo '<div class="main" style="top: -200px;"><div class="container" style="position: relative; top:300px;display: flex;
+justify-content: center;
+flex-direction: column;">';
 
 echo '<form action="p1.php" method="GET" style="display: -webkit-box;display: flex;flex-wrap: 
   wrap;-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: column;align-items: center;">';
@@ -141,7 +143,7 @@ if (isset($_GET['supplier'])) {
 
   echo join(',', $tmep);
   echo "<br>Sort the table by clicking the table head";
-  echo "</form></div></div>";
+  echo "</form></div>";
 }
 /**
  * Log in to the MySQL database.
@@ -155,7 +157,7 @@ mysql_select_db( $db_database, $db_server )or die( "Unable to select database: "
  * Warped the table under a <div> label with relative position.
  */
 echo <<<_TABLE1
-  <div class="table-wrapper" align="center" style="position:relative;top:300px;">
+
   <table class="fl-table">
     <thead id="head-table">
     <tr >

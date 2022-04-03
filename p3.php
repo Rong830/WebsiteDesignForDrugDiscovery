@@ -31,11 +31,11 @@ _MAIN1;
 /**
  * Make a container for user to choose from different manufactures.
  */
-echo '<h2 style="text-align: center">Which statics are you interested in. </h2>';
-echo '<div class="main" style="top: -200px;"><div class="container"style="position: relative; top:200px;">';
+echo '<div style="position:relative;top:50px;"><h2 style="text-align: center">Which statics are you interested in. </h2></div>';
+echo '<div class="main" style="top: -100px;"><div class="container"style="position: relative; top:200px;">';
 // Below is the check box
 echo '<form action="p3.php" method="post" style="display: -webkit-box;display: flex;flex-wrap: wrap;justify-content: center;
--webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: row;">';
+-webkit-box-orient: vertical;-webkit-box-direction: normal;flex-direction: row;margin: 0 200px">';
 for ($j = 0; $j < sizeof($dbfs); ++$j) {
   if ($j == 0) {
     echo '<label style="width: 300px">';
@@ -56,7 +56,7 @@ for ($j = 0; $j < sizeof($dbfs); ++$j) {
   }
   echo "\n";
 }
-echo '<p><button type="reset" class="w3-button w3-center"> Reset </button><input type="submit" class="w3-button w3-center w3-theme" value="Done" /></p>';
+echo '<p style="width:100%;text-align:center"><button type="reset" class="w3-button w3-center"> Reset </button><input type="submit" class="w3-button w3-center w3-theme" value="Done" /></p>';
 echo '</form></div>';
 
 echo '<div class="table-wrapper" align="center" style="position:relative;top:300px;">';
