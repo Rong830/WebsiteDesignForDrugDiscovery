@@ -155,39 +155,54 @@ if($setpar) {
   $firstsl = False;
   // Define the query, select catn from the Compounds database
   $compsel = "select catn,id,ManuID from Compounds where (";
+
+  $count  = "select count(*) from Compounds where (";
   // Check which feature have been set by the user and change the query $compsel
   // Atoms
   if (($_POST['natmax'] != "") && ($_POST['natmin']!="")) {
     $compsel = $compsel."(natm > ".get_post('natmin')." and  natm < ".get_post('natmax').")";
+    $count = $count."(natm > ".get_post('natmin')." and  natm < ".get_post('natmax').")";
     $firstsl = True;
   }
   // Carbons
   if (($_POST['ncrmax']!="") && ($_POST['ncrmin']!="")) {
     if($firstsl) $compsel = $compsel." and ";
+    if($firstsl) $count = $count." and ";
     $compsel = $compsel."(ncar > ".get_post('ncrmin')." and  ncar < ".get_post('ncrmax').")";
+    $count = $compsel."(ncar > ".get_post('ncrmin')." and  ncar < ".get_post('ncrmax').")";
     $firstsl = True;
   }
   // Nitrogens
   if (($_POST['nntmax']!="") && ($_POST['nntmin']!="")) {
     if($firstsl) $compsel = $compsel." and ";
+    if($firstsl) $count = $count." and ";
     $compsel = $compsel."(nnit > ".get_post('nntmin')." and  nnit < ".get_post('nntmax').")";
+    $count = $count."(nnit > ".get_post('nntmin')." and  nnit < ".get_post('nntmax').")";
     $firstsl = True;
   }
   // Oxygens
   if (($_POST['noxmax']!="") && ($_POST['noxmin']!="")) {
     if($firstsl) $compsel = $compsel." and ";
+    if($firstsl) $count = $count." and ";
     $compsel = $compsel."(noxy > ".get_post('noxmin')." and  noxy < ".get_post('noxmax').")";
+    $count = $count."(noxy > ".get_post('noxmin')." and  noxy < ".get_post('noxmax').")";
     $firstsl = True;
   }
+  $p = new Page();
   // echo "<pre>";
   // Put the output results under a <div> label, which is easier to manage the position.
   echo '<div style="top: 100;position: relative;left: 0;right: 0;bottom: 0;" align="center">';
   if($firstsl) {
     $compsel = $compsel.") and ".$mansel;
+    $count = $count.") and ".$mansel;
+    $p->setCount(mysql_query($count));
+    // $result = mysql_query($query . ' ' .  $p->limit());
+
     echo "<p>Query: $compsel</p>";
     echo "\n";
       // Fetch the result using the query $compsel
-      $result = mysql_query($compsel . ' limit 10');
+      // $result = mysql_query($compsel);
+      $result = mysql_query($compsel . ' ' .  $p->limit());
       if(!result) die("unable to process query: " . mysql_error());
       $rows = mysql_num_rows($result);
       // Only show results under 100 rows
@@ -231,7 +246,8 @@ if($setpar) {
           // Get jsmol using id
           echo "<td><a href=jmoltest.php?cid=$cid>More</a></td>";
         }
-        echo "</tbody></table></div>";
+        echo "</tbody></table>";
+        echo  $p->showPages() . '</div>';
       }
   } else {
     echo "No Query Given\n";

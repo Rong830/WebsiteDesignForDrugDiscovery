@@ -79,7 +79,7 @@ class Page
         */
         $pageStr = '<div  class="table-wrapper" style="margin-top: 30px;
     padding-bottom: 30px;">';
-        $pageStr .= 'There are ' . $this->count . ' recoords, each page will show ' . $this->subPages . ' records';
+        $pageStr .= 'There are ' . $this->count . ' recoords, each page will show ' . $this->subPages . ' records. ';
         $pageStr .= 'Now is in ' . $this->currPage . '/' . $this->countPages . ' page ';
 
         $_GET['page'] = 1;
